@@ -7,36 +7,36 @@ const projects = ref([
   {
     title: 'Project 1',
     description: 'My first Portfolio',
-    image: '../public/projects/projects_1.png',
+    image: '/projects/projects_1.png',
     tags: ['HTML', 'CSS', 'Javascript'],
     link: 'https://arilsamsi.vercel.app/'
   },
   {
     title: 'Project 2',
     description: 'First Projects In class X',
-    image: '../public/projects/projects_2.png',
+    image: '/projects/projects_2.png',
     tags: ['HTML', 'CSS', 'Javascript'],
     link: 'https://rplsmklimboto.vercel.app/'
   },
   {
     title: 'Project 3',
     description: 'A website make QRCODE',
-    image: '../public/projects/projects_3.png',
+    image: '/projects/projects_3.png',
     tags: ['HTML', 'CSS', 'Javascript'],
     link: 'https://pembuat-qr.vercel.app/'
   },
   {
     title: 'Project 4',
     description: 'Website todo list',
-    image: '../public/projects/projects_4.png',
-    tags: ['HTML', 'CSS', 'Javascript'],
+    image: '/projects/projects_4.png',
+    tags: ['Vue JS'],
     link: 'https://daftartugas.vercel.app/'
   },
   {
     title: 'Project 5',
     description: 'Wesbite movie',
-    image: '../public/projects/projects_5.png',
-    tags: ['HTML', 'CSS', 'Javascript'],
+    image: '/projects/projects_5.png',
+    tags: ['Vue JS'],
     link: 'https://maniacmovie.vercel.app/'
   }
 ])
