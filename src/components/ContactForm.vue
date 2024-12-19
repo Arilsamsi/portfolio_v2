@@ -86,8 +86,7 @@ export default defineComponent({
         type="submit"
         class="w-full bg-primary text-white py-3 rounded-lg hover:bg-secondary transition-colors duration-300 disabled:opacity-50"
       >
-        <!-- <span v-if="i>Sending...</span>
-        <span v-else>Send Message</span> -->
+        <span>Send Message</span>
       </button>
 
       <!-- <div
