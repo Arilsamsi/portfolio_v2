@@ -1,6 +1,6 @@
-
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 export default defineComponent({
   name: 'GoogleForm',
@@ -28,12 +28,39 @@ export default defineComponent({
 
         if (response.ok) {
           console.log('Success!', await response.text());
-          alert('Form submitted successfully!');
+          Swal.fire({
+            title: 'Success!',
+            text: 'Form submitted successfully!',
+            icon: 'success',
+            confirmButtonText: 'OK',
+          });
+          // Reset form data after success
+          formData.name = '';
+          formData.email = '';
+          formData.message = '';
         } else {
           console.error('Error!', response.statusText);
+          Swal.fire({
+            title: 'Error!',
+            text: 'There was an issue submitting the form. Please try again.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+          });
         }
       } catch (error: any) {
         console.error('Error!', error.message);
+        Swal.fire({
+          title: 'Error!',
+          text: 'An unexpected error occurred. Please try again later.',
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
+      }
+    };
+
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.key === 'Enter') {
+        submitForm();
       }
     };
 
@@ -46,9 +73,10 @@ export default defineComponent({
 </script>
 
 
+
 <template>
   <div class="max-w-2xl mx-auto">
-    <form name="submit-to-google-sheet" @submit.prevent="submitForm" class="space-y-6">
+    <form @keydown.enter.prevent="submitForm" name="submit-to-google-sheet" @submit.prevent="submitForm" class="space-y-6">
       <div>
         <label for="name" class="block text-sm font-medium mb-2">Name</label>
         <input
@@ -83,6 +111,7 @@ export default defineComponent({
       </div>
 
       <button
+        @click="submitForm"
         type="submit"
         class="w-full bg-primary text-white py-3 rounded-lg hover:bg-secondary transition-colors duration-300 disabled:opacity-50"
       >
