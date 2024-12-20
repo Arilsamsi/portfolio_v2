@@ -56,7 +56,7 @@ const skills = ref([
         <h1 class="text-5xl font-bold mb-6 ml-10">Ahmad Aril Samsi</h1>
         <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">Full Stack Developer</p>
         <a href="#contact" class="bg-primary text-white px-8 py-3 rounded-full hover:bg-secondary transition-colors duration-300">
-          Get in Touch
+          Contact Me
         </a>
       </div>
     </section>
@@ -101,7 +101,7 @@ const skills = ref([
 
     <!-- Contact Section -->
     <section id="contact" class="section-container">
-      <h2 class="section-title">Get in Touch</h2>
+      <h2 class="section-title">Contact Me</h2>
       <ContactForm />
     </section>
   </main>
