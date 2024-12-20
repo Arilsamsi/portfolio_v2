@@ -58,12 +58,6 @@ export default defineComponent({
       }
     };
 
-    const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.key === 'Enter') {
-        submitForm();
-      }
-    };
-
     return {
       formData,
       submitForm,
@@ -71,8 +65,6 @@ export default defineComponent({
   },
 });
 </script>
-
-
 
 <template>
   <div class="max-w-2xl mx-auto">
