@@ -42,13 +42,13 @@ const projects = ref([
 ])
 
 const skills = ref([
-  { name: 'HTML', icon: 'src/assets/skils/html.png' },
-  { name: 'CSS', icon: 'src/assets/skils/css.png' },
-  { name: 'JavaScript', icon: 'src/assets/skils/js.png' },
-  { name: 'PHP', icon: 'src/assets/skils/php.png' },
-  { name: 'Laravel', icon: 'src/assets/skils/laravel.png' },
-  { name: 'Python', icon: 'src/assets/skils/python.png' },
-  { name: 'Vue JS', icon: 'src/assets/skils/vuejs.png' },
+  { name: 'HTML', icon: '/skils/html.png' },
+  { name: 'CSS', icon: '/skils/css.png' },
+  { name: 'JavaScript', icon: '/skils/js.png' },
+  { name: 'PHP', icon: '/skils/php.png' },
+  { name: 'Laravel', icon: '/skils/laravel.png' },
+  { name: 'Python', icon: '/skils/python.png' },
+  { name: 'Vue JS', icon: '/skils/vuejs.png' },
 ])
 </script>
 
