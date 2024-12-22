@@ -83,7 +83,7 @@ const skills = ref([
         </p>
       
         <!-- Skills Section -->
-         <h2 class="section-title text-3xl font-bold text-gray-800 dark:text-white">Skils</h2>
+         <h2 class="section-title text-3xl font-bold text-gray-800 dark:text-white">Skills</h2>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-8">
           <div v-for="skill in skills" :key="skill.name" class="card p-4 bg-gray-100 dark:bg-gray-800 text-center rounded-lg shadow-lg flex flex-col items-center">
             <img :src="skill.icon" :alt="skill.name" class="w-15 h-12 mb-2">
