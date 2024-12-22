@@ -47,8 +47,9 @@ const skills = ref([
   { name: 'JavaScript', icon: '/skils/js.png' },
   { name: 'PHP', icon: '/skils/php.png' },
   { name: 'Laravel', icon: '/skils/laravel.png' },
-  { name: 'Python', icon: '/skils/python.png' },
   { name: 'Vue JS', icon: '/skils/vuejs.png' },
+  { name: 'Python', icon: '/skils/python.png' },
+  { name: 'My SQL', icon: '/skils/mysql.png' },
 ])
 </script>
 
