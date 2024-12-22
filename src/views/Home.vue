@@ -42,9 +42,13 @@ const projects = ref([
 ])
 
 const skills = ref([
-  'JavaScript', 'Vue.js',
-  'Python','Git', 'Laravel',
-  'PHP', 'HTML', 'CSS'
+  { name: 'HTML', icon: 'src/assets/skils/html.png' },
+  { name: 'CSS', icon: 'src/assets/skils/css.png' },
+  { name: 'JavaScript', icon: 'src/assets/skils/js.png' },
+  { name: 'PHP', icon: 'src/assets/skils/php.png' },
+  { name: 'Laravel', icon: 'src/assets/skils/laravel.png' },
+  { name: 'Python', icon: 'src/assets/skils/python.png' },
+  { name: 'Vue JS', icon: 'src/assets/skils/vuejs.png' },
 ])
 </script>
 
@@ -79,8 +83,10 @@ const skills = ref([
       
         <!-- Skills Section -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-8">
-          <div v-for="skill in skills" :key="skill" class="card p-4 bg-gray-100 dark:bg-gray-800 text-center rounded-lg shadow-lg">
-            <p class="text-sm font-semibold text-gray-800 dark:text-white">{{ skill }}</p>
+          <div v-for="skill in skills" :key="skill.name" class="card p-4 bg-gray-100 dark:bg-gray-800 text-center rounded-lg shadow-lg flex flex-col items-center">
+            <img :src="skill.icon" :alt="skill.name" class="w-15 h-12 mb-2">
+            <!-- <div v-html="skill.icon"></div> -->
+            <p class="text-sm font-semibold text-gray-800 dark:text-white">{{ skill.name }}</p>
           </div>
         </div>
       </div>

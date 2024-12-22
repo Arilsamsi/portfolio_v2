@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
-import Swal from 'sweetalert2'; // Import SweetAlert2
+import Swal from 'sweetalert2'; 
 
 export default defineComponent({
   name: 'GoogleForm',
