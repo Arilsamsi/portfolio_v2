@@ -60,8 +60,8 @@ const skills = ref([
       <div class="text-center animate-fade-in">
         <h1 class="text-5xl font-bold mb-6 ml-10">Ahmad Aril Samsi</h1>
         <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">Full Stack Developer</p>
-        <a href="#contact" class="bg-primary text-white px-8 py-3 rounded-full hover:bg-secondary transition-colors duration-300">
-          Contact Me
+        <a href="https://wa.me/6282393426013" class="bg-primary text-white px-8 py-3 rounded-full hover:bg-secondary transition-colors duration-300">
+          WhatsApp
         </a>
       </div>
     </section>
