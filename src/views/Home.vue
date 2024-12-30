@@ -9,35 +9,40 @@ const projects = ref([
     description: 'My first Portfolio',
     image: '/projects/projects_1.png',
     tags: ['HTML', 'CSS', 'Javascript'],
-    link: 'https://arilsamsi.vercel.app/'
+    link: 'https://arilsamsi.vercel.app/',
+    repo: 'https://github.com/Arilsamsi/proyek'
   },
   {
     title: 'Project 2',
     description: 'First Projects In class X',
     image: '/projects/projects_2.png',
     tags: ['HTML', 'CSS', 'Javascript'],
-    link: 'https://rplsmklimboto.vercel.app/'
+    link: 'https://rplsmklimboto.vercel.app/',
+    repo: 'https://github.com/Arilsamsi/proyek'
   },
   {
     title: 'Project 3',
     description: 'A website make QRCODE',
     image: '/projects/projects_3.png',
     tags: ['HTML', 'CSS', 'Javascript'],
-    link: 'https://pembuat-qr.vercel.app/'
+    link: 'https://pembuat-qr.vercel.app/',
+    repo: 'https://github.com/Arilsamsi/proyek'
   },
   {
     title: 'Project 4',
     description: 'Website todo list',
     image: '/projects/projects_4.png',
     tags: ['Vue JS'],
-    link: 'https://daftartugas.vercel.app/'
+    link: 'https://daftartugas.vercel.app/',
+    repo: 'https://github.com/Arilsamsi/todo-list'
   },
   {
     title: 'Project 5',
     description: 'Wesbite movie',
     image: '/projects/projects_5.png',
     tags: ['Vue JS'],
-    link: 'https://maniacmovie.vercel.app/'
+    link: 'https://maniacmovie.vercel.app/',
+    repo: 'https://github.com/Arilsamsi/movie-maniac_v2',
   }
 ])
 

@@ -5,6 +5,7 @@ defineProps<{
   image: string
   tags: string[]
   link: string
+  repo: string
 }>()
 </script>
 
@@ -29,6 +30,13 @@ defineProps<{
       rel="noopener noreferrer"
     >
       View Project →
+    </a>
+    <a :href="repo"
+        class="pl-5 inline-block text-primary hover:text-secondary transition-colors duration-300"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+      View Repo →
     </a>
   </article>
 </template>
