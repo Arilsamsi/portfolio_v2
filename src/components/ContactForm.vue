@@ -15,48 +15,59 @@ export default defineComponent({
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzJDT95PG2UD_u2mNZifQbh-ZSXcQtUtS1Z6UImE812mmoA_6UIcx9qvyvsuOfs4w_n4w/exec'; 
 
     const submitForm = async () => {
-      try {
-        const form = new FormData();
-        form.append('name', formData.name);
-        form.append('email', formData.email);
-        form.append('message', formData.message);
+    // Validasi input
+    if (!formData.name || !formData.email || !formData.message) {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Please fill out all fields before submitting.',
+        icon: 'warning',
+        confirmButtonText: 'OK',
+      });
+      return;
+    }
 
-        const response = await fetch(scriptURL, {
-          method: 'POST',
-          body: form,
+    try {
+      const form = new FormData();
+      form.append('name', formData.name);
+      form.append('email', formData.email);
+      form.append('message', formData.message);
+
+      const response = await fetch(scriptURL, {
+        method: 'POST',
+        body: form,
+      });
+
+      if (response.ok) {
+        console.log('Success!', await response.text());
+        Swal.fire({
+          title: 'Success!',
+          text: 'Form submitted successfully!',
+          icon: 'success',
+          confirmButtonText: 'OK',
         });
-
-        if (response.ok) {
-          console.log('Success!', await response.text());
-          Swal.fire({
-            title: 'Success!',
-            text: 'Form submitted successfully!',
-            icon: 'success',
-            confirmButtonText: 'OK',
-          });
-          // Reset form data after success
-          formData.name = '';
-          formData.email = '';
-          formData.message = '';
-        } else {
-          console.error('Error!', response.statusText);
-          Swal.fire({
-            title: 'Error!',
-            text: 'There was an issue submitting the form. Please try again.',
-            icon: 'error',
-            confirmButtonText: 'OK',
-          });
-        }
-      } catch (error: any) {
-        console.error('Error!', error.message);
+        // Reset form data after success
+        formData.name = '';
+        formData.email = '';
+        formData.message = '';
+      } else {
+        console.error('Error!', response.statusText);
         Swal.fire({
           title: 'Error!',
-          text: 'An unexpected error occurred. Please try again later.',
+          text: 'There was an issue submitting the form. Please try again.',
           icon: 'error',
           confirmButtonText: 'OK',
         });
       }
-    };
+    } catch (error: any) {
+      console.error('Error!', error.message);
+      Swal.fire({
+        title: 'Error!',
+        text: 'An unexpected error occurred. Please try again later.',
+        icon: 'error',
+        confirmButtonText: 'OK',
+      });
+    }
+  };
 
     return {
       formData,
@@ -109,12 +120,6 @@ export default defineComponent({
       >
         <span>Send Message</span>
       </button>
-
-      <!-- <div
-        class="text-green-600 text-center animate-fade-in"
-      >
-        Message sent successfully!
-      </div> -->
     </form>
   </div>
 </template>
