@@ -39,19 +39,19 @@ export default defineComponent({
 
       if (response.ok) {
         console.log('Success!', await response.text());
-  Swal.fire({
-    title: "Pesan Berhasil Terkirim",
-    width: 340,
-    heightAuto: false,
-    color: "#DA498D",
-    background: "#fff url(/gif/stars.gif) center",
-    backdrop: `
-      rgba(21, 94, 149, 0.5)
-      url("/gif/cat.gif")
-      center top
-      no-repeat
-      `,
-  });
+        Swal.fire({
+          title: "Pesan Berhasil Terkirim",
+          width: 340,
+          heightAuto: false,
+          color: "#DA498D",
+          background: "#fff url(/gif/stars.gif) center",
+          backdrop: `
+            rgba(21, 94, 149, 0.5)
+            url("/gif/cat.gif")
+            center top
+            no-repeat
+            `,
+        });
         // Reset form data after success
         formData.name = '';
         formData.email = '';
