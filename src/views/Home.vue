@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { onMounted, onUnmounted } from "vue";
 import ProjectCard from '../components/ProjectCard.vue'
 import ContactForm from '../components/ContactForm.vue'
+import SocialLinks from '../components/layout/SocialLinks.vue';
 
 const projects = ref([
   {
@@ -55,7 +57,83 @@ const skills = ref([
   { name: 'Vue JS', icon: '/skils/vuejs.png' },
   { name: 'Python', icon: '/skils/python.png' },
   { name: 'My SQL', icon: '/skils/mysql.png' },
-])
+]);
+
+// Animasi Mengetik
+const texts = ["Full Stack Developer", "Gamers",];
+const displayedText = ref<string>(""); // Teks yang akan ditampilkan
+let index = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typingInterval: number | undefined;
+
+const type = () => {
+  const currentText = texts[index];
+  if (isDeleting) {
+    charIndex--;
+    if (charIndex === 0) {
+      isDeleting = false;
+      index = (index + 1) % texts.length; // Pindah ke teks berikutnya
+    }
+  } else {
+    charIndex++;
+    if (charIndex === currentText.length) {
+      isDeleting = true;
+    }
+  }
+
+  // Update teks yang ditampilkan
+  displayedText.value = currentText.substring(0, charIndex);
+
+  // Atur kecepatan mengetik dan menghapus
+  const delay = isDeleting ? 300 : 200;
+  if (charIndex === currentText.length && !isDeleting) {
+    typingInterval = window.setTimeout(type, 5000); // Tunggu 5 detik sebelum menghapus
+  } else {
+    typingInterval = window.setTimeout(type, delay);
+  }
+};
+
+onMounted(() => {
+  type(); 
+});
+
+onUnmounted(() => {
+  clearTimeout(typingInterval);
+});
+
+const links = [
+    {
+      href: 'https://github.com/arilsamsi/',
+      icon: 'fab fa-github',
+      class: 'hover:text-gray-500',
+    },
+    {
+      href: 'https://www.facebook.com/profile.php?id=100076206191055',
+      icon: 'fab fa-facebook-f',
+      class: 'hover:text-blue-600',
+    },
+    {
+      href: 'https://www.tiktok.com/@deyissmyluvvv?is_from_webapp=1&sender_device=pc',
+      icon: 'fab fa-tiktok',
+      class: 'hover:text-black',
+    },
+    {
+      href: 'https://www.instagram.com/arilsamsi/?igsh=aHB5dXY1NTN6N2Q4',
+      icon: 'fab fa-instagram',
+      class: 'hover:text-pink-600',
+    },
+  ];
+  
+  const isPaused = ref(false);
+  
+  const pauseAnimation = () => {
+    isPaused.value = true;
+  };
+  
+  const resumeAnimation = () => {
+    isPaused.value = false;
+  };
 </script>
 
 <template>
@@ -63,12 +141,51 @@ const skills = ref([
     <!-- Hero Section -->
     <section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10">
       <div class="text-center animate-fade-in">
-        <h1 class="text-5xl font-bold mb-6 ml-10">Ahmad Aril Samsi</h1>
-        <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">Full Stack Developer</p>
+        <h1 class="text-5xl font-bold mb-6 dark:text-white">Ahmad Aril Samsi</h1>
+        <div class="text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent dark:bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent mb-8">
+          <span>{{ displayedText }}</span>
+        </div>
         <a href="https://wa.me/6282393426013" class="bg-[#128c7e] text-white px-8 py-3 rounded-full hover:bg-[#25d366] transition-colors duration-300">
           <font-awesome-icon :icon="['fab', 'whatsapp']" />
           WhatsApp
         </a>
+        <!-- <div class="mt-6 space-x-4">
+          <a href="https://github.com/arilsamsi/" class="text-gray-400 hover:text-gray-500">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100076206191055" class="text-gray-400 hover:text-blue-600">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.tiktok.com/@deyissmyluvvv?is_from_webapp=1&sender_device=pc" class="text-gray-400 hover:text-black">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="https://www.instagram.com/arilsamsi/?igsh=aHB5dXY1NTN6N2Q4" class="text-gray-400 hover:text-pink-600">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div> -->
+        <!-- <SocialLinks /> -->
+        <div class="social-links">
+          <div class="overflow-hidden relative w-full h-10 mt-5">
+            <div
+              class="links flex space-x-4 absolute w-auto animate-scroll"
+              :class="{ 'paused': isPaused }"
+              @mouseenter="pauseAnimation"
+              @mouseleave="resumeAnimation"
+              >
+              <a
+                v-for="link in links"
+                :key="link.href"
+                :href="link.href"
+                :class="link.class"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-gray-400 hover:scale-110 transition-transform"
+                >
+                <i :class="link.icon"></i>
+              </a>
+            </div>
+          </div> 
+        </div>
       </div>
     </section>
 
@@ -90,13 +207,13 @@ const skills = ref([
       
         <!-- Skills Section -->
          <h2 class="section-title text-3xl font-bold text-gray-800 dark:text-white">Skills</h2>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-8">
-          <div v-for="skill in skills" :key="skill.name" class="card p-4 bg-gray-100 dark:bg-gray-800 text-center rounded-lg shadow-lg flex flex-col items-center">
-            <img :src="skill.icon" :alt="skill.name" class="w-15 h-12 mb-2">
-            <!-- <div v-html="skill.icon"></div> -->
-            <p class="text-sm font-semibold text-gray-800 dark:text-white">{{ skill.name }}</p>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-8">
+            <div v-for="skill in skills" :key="skill.name" class="card p-4 bg-gray-100 dark:bg-gray-800 text-center rounded-lg shadow-lg flex flex-col items-center">
+              <img :src="skill.icon" :alt="skill.name" class="w-15 h-12 mb-2">
+              <!-- <div v-html="skill.icon"></div> -->
+              <p class="text-sm font-semibold text-gray-800 dark:text-white">{{ skill.name }}</p>
+            </div>
           </div>
-        </div>
       </div>
     </section>
 
@@ -120,3 +237,37 @@ const skills = ref([
     </section>
   </main>
 </template>
+
+<style scoped>
+    @keyframes scroll {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .animate-scroll {
+    animation: scroll 10s linear infinite;
+  }
+  
+  .paused {
+    animation-play-state: paused;
+  }
+  .social-links{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .relative{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+  }
+  .links{
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+</style>
