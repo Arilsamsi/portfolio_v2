@@ -39,12 +39,19 @@ export default defineComponent({
 
       if (response.ok) {
         console.log('Success!', await response.text());
-        Swal.fire({
-          title: 'Success!',
-          text: 'Form submitted successfully!',
-          icon: 'success',
-          confirmButtonText: 'OK',
-        });
+  Swal.fire({
+    title: "Pesan Berhasil Terkirim",
+    width: 340,
+    heightAuto: false,
+    color: "#155E95",
+    background: "#fff url(/images/trees.png)",
+    backdrop: `
+      rgba(21, 94, 149, 0.5)
+      url("/gif/cat.gif")
+      center top
+      no-repeat
+      `
+  });
         // Reset form data after success
         formData.name = '';
         formData.email = '';
