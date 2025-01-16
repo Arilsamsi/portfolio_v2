@@ -3,7 +3,6 @@ import { ref } from 'vue'
 import { onMounted, onUnmounted } from "vue";
 import ProjectCard from '../components/ProjectCard.vue'
 import ContactForm from '../components/ContactForm.vue'
-import SocialLinks from '../components/layout/SocialLinks.vue';
 
 const projects = ref([
   {
@@ -163,7 +162,6 @@ const links = [
             <i class="fab fa-instagram"></i>
           </a>
         </div> -->
-        <!-- <SocialLinks /> -->
         <div class="social-links">
           <div class="overflow-hidden relative w-full h-10 mt-5">
             <div
