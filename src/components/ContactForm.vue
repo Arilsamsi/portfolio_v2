@@ -43,14 +43,14 @@ export default defineComponent({
     title: "Pesan Berhasil Terkirim",
     width: 340,
     heightAuto: false,
-    color: "#155E95",
-    background: "#fff url(/images/trees.png)",
+    color: "#DA498D",
+    background: "#fff url(/gif/stars.gif) center",
     backdrop: `
       rgba(21, 94, 149, 0.5)
       url("/gif/cat.gif")
       center top
       no-repeat
-      `
+      `,
   });
         // Reset form data after success
         formData.name = '';
