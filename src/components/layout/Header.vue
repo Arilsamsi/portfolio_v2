@@ -20,7 +20,7 @@ const menuItems = [
     <nav class="max-w-6xl mx-auto px-4 py-4">
       <div class="flex justify-between items-center">
         <a 
-          href="#" 
+          href="/" 
           class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
         >
           Portfolio

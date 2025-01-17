@@ -14,8 +14,8 @@
             @mouseleave="resumeAnimation"
           >
             <a
-              v-for="link in links"
-              :key="link.href"
+              v-for="(link, index) in [ ...links, ...links, ...links ]"
+              :key="index"
               :href="link.href"
               :class="link.class"
               target="_blank"
@@ -78,15 +78,15 @@ export default {
 <style scoped>
 @keyframes scroll {
   0% {
-    transform: translateX(100%);
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-33.5%);
   }
 }
 
 .animate-scroll {
-  animation: scroll 10s linear infinite;
+  animation: scroll 5s linear infinite;
 }
 
 .paused {

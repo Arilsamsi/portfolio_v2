@@ -59,14 +59,14 @@ const skills = ref([
   { name: 'My SQL', icon: '/skils/mysql.png' },
 ]);
 
-const isPaused = ref(false);
+const isPausedSkill = ref(false);
 
-const pauseAnimation = () => {
-  isPaused.value = true;
+const pauseAnimationSkill = () => {
+  isPausedSkill.value = true;
 };
 
-const resumeAnimation = () => {
-  isPaused.value = false;
+const resumeAnimationSkill = () => {
+  isPausedSkill.value = false;
 };
 
 // Animasi Mengetik
@@ -135,13 +135,13 @@ const links = [
     },
   ];
   
-  const isPausedSkill = ref(false);
+  const isPaused = ref(false);
   
-  const pauseAnimationSkill = () => {
+  const pauseAnimation = () => {
     isPaused.value = true;
   };
   
-  const resumeAnimationSkill = () => {
+  const resumeAnimation = () => {
     isPaused.value = false;
   };
 </script>
@@ -177,13 +177,13 @@ const links = [
           <div class="overflow-hidden relative w-full h-10 mt-5">
             <div
               class="links flex space-x-4 absolute w-auto animate-scroll"
-              :class="{ 'paused': isPausedSkill }"
+              :class="{ 'paused': isPaused }"
               @mouseenter="pauseAnimation"
               @mouseleave="resumeAnimation"
               >
               <a
-                v-for="link in links"
-                :key="link.href"
+                v-for="(link, index) in [ ...links, ...links, ...links]"
+                :key="index"
                 :href="link.href"
                 :class="link.class"
                 target="_blank"
@@ -229,7 +229,7 @@ const links = [
               class="skills-track flex space-x-6 absolute w-max animate-scroll"
               @mouseenter="pauseAnimationSkill"
               @mouseleave="resumeAnimationSkill"
-              :class="{ 'paused': isPaused }"
+              :class="{ 'pausedSkill': isPausedSkill }"
               >
               <div
                 v-for="(skill, index) in [...skills, ...skills, ...skills]"
@@ -269,15 +269,15 @@ const links = [
 <style scoped>
     @keyframes scroll {
     0% {
-      transform: translateX(100%);
+      transform: translateX(0);
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(-33.6%);
     }
   }
   
   .animate-scroll {
-    animation: scroll 10s linear infinite;
+    animation: scroll 5s linear infinite;
   }
   
   .paused {
@@ -321,7 +321,7 @@ const links = [
   width: max-content;
 }
 
-.paused {
+.pausedSkill {
   animation-play-state: paused;
 }
 
