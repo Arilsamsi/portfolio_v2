@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { onMounted, onUnmounted } from "vue";
 import ProjectCard from '../components/ProjectCard.vue'
 import ContactForm from '../components/ContactForm.vue'
+import PopUp from '../components/layout/PopUp.vue';
 
 const projects = ref([
   {
@@ -57,6 +58,16 @@ const skills = ref([
   { name: 'Python', icon: '/skils/python.png' },
   { name: 'My SQL', icon: '/skils/mysql.png' },
 ]);
+
+const isPaused = ref(false);
+
+const pauseAnimation = () => {
+  isPaused.value = true;
+};
+
+const resumeAnimation = () => {
+  isPaused.value = false;
+};
 
 // Animasi Mengetik
 const texts = ["Full Stack Developer", "Gamers",];
@@ -124,13 +135,13 @@ const links = [
     },
   ];
   
-  const isPaused = ref(false);
+  const isPausedSkill = ref(false);
   
-  const pauseAnimation = () => {
+  const pauseAnimationSkill = () => {
     isPaused.value = true;
   };
   
-  const resumeAnimation = () => {
+  const resumeAnimationSkill = () => {
     isPaused.value = false;
   };
 </script>
@@ -166,7 +177,7 @@ const links = [
           <div class="overflow-hidden relative w-full h-10 mt-5">
             <div
               class="links flex space-x-4 absolute w-auto animate-scroll"
-              :class="{ 'paused': isPaused }"
+              :class="{ 'paused': isPausedSkill }"
               @mouseenter="pauseAnimation"
               @mouseleave="resumeAnimation"
               >
@@ -204,14 +215,33 @@ const links = [
         </p>
       
         <!-- Skills Section -->
-         <h2 class="section-title text-3xl font-bold text-gray-800 dark:text-white">Skills</h2>
+         <!-- <h2 class="section-title text-3xl font-bold text-gray-800 dark:text-white">Skills</h2>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-8">
-            <div v-for="skill in skills" :key="skill.name" class="card p-4 bg-gray-100 dark:bg-gray-800 text-center rounded-lg shadow-lg flex flex-col items-center">
+            <div v-for="skill in skills" :key="skill.name" class="card p-4 bg-gray-100 dark:bg-gray-800 text-center rounded-lg shadow-lg flex flex-col items-center hover:scale-110">
               <img :src="skill.icon" :alt="skill.name" class="w-15 h-12 mb-2">
-              <!-- <div v-html="skill.icon"></div> -->
+              <div v-html="skill.icon"></div>
               <p class="text-sm font-semibold text-gray-800 dark:text-white">{{ skill.name }}</p>
             </div>
+          </div> -->
+          <h2 class="section-title text-3xl font-bold text-gray-800 dark:text-white skill">Skills</h2>
+          <div class="skills-container overflow-hidden relative">
+            <div
+              class="skills-track flex space-x-6 absolute w-max animate-scroll"
+              @mouseenter="pauseAnimationSkill"
+              @mouseleave="resumeAnimationSkill"
+              :class="{ 'paused': isPaused }"
+              >
+              <div
+                v-for="(skill, index) in [...skills, ...skills, ...skills]"
+                :key="index"
+                class="card p-4 bg-gray-100 dark:bg-gray-800 text-center rounded-lg shadow-lg flex flex-col items-center hover:scale-110 cursor-pointer"
+                >
+                  <img :src="skill.icon" :alt="skill.name" class="w-15 h-12 mb-2" />
+                  <p class="text-sm font-semibold text-gray-800 dark:text-white">{{ skill.name }}</p>
+              </div> 
+            </div>
           </div>
+          <PopUp />
       </div>
     </section>
 
@@ -268,4 +298,37 @@ const links = [
     font-weight: bold;
     font-size: 1.5rem;
   }
+
+  @keyframes scrolls {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.6%);
+  }
+}
+
+.skills-container {
+  width: 100%;
+  height: 150px; /* Adjust height based on card size */
+  position: relative;
+  overflow: hidden;
+}
+
+.skills-track {
+  display: flex;
+  animation: scrolls 15s linear infinite;
+  width: max-content;
+}
+
+.paused {
+  animation-play-state: paused;
+}
+
+.card {
+  min-width: 120px; /* Adjust card size */
+}
+.skill{
+  margin-bottom: 7px;
+}
 </style>
