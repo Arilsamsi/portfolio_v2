@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import ThemeSwitcher from "../ThemeSwitcher.vue";
+// import ThemeSwitcher from "../ThemeSwitcher.vue";
 
 export default defineComponent({
   name: "Popup",
