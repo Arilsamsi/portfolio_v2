@@ -1,9 +1,23 @@
 <script lang="ts">
-import { defineComponent, onMounted, ref, computed, nextTick } from 'vue';
+import { defineComponent, ref, onMounted, computed, nextTick, defineProps } from 'vue';
 import { marked } from 'marked';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github-dark.min.css';
+import 'boxicons';
 import geminiAvatar from '../assets/bot/gemini.svg'
+
+const props = defineProps({
+  offset: {
+    type: Boolean,
+    default: false,
+  },
+})
+
+const isChatOpen = ref(false)
+const toggleChat = () => {
+  isChatOpen.value = !isChatOpen.value
+}
+const botGeminiClass = computed(() => (props.offset ? 'bottom-[85px]' : 'bottom-8'))
 
 interface Message {
   type: 'user' | 'bot';
@@ -15,47 +29,36 @@ interface Message {
 
 export default defineComponent({
   name: 'Chatbot',
-  props: {
-    offset: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  setup(props) {
+  setup() {
     const chatHistory = ref<Message[]>([]);
     const userMessage = ref('');
     const isGeneratingResponse = ref(false);
     const showHeaderText = computed(() => chatHistory.value.length === 0);
     const chatContainer = ref<HTMLElement | null>(null);
     const theme = ref(localStorage.getItem('themeColor') || 'dark_mode');
-    const userAvatar =
-      'https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small_2x/user-profile-icon-free-vector.jpg';
-    // const geminiAvatar = require('../assets/bot/gemini.svg');
+    const userAvatar = "https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small_2x/user-profile-icon-free-vector.jpg";
+    // const geminiAvatar = require('../assets/bot/gemini.svg'); // Pastikan path ini benar!
     const suggestions = ref([
-      'Berikan tips untuk membantu anak menyelesaikan pekerjaan rumahnya tepat waktu',
-      'Bantu saya menulis email di luar kantor',
-      'Beri saya frasa untuk belajar bahasa baru',
-      'Tunjukkan pada saya cara membuat sesuatu dengan tangan',
+      "Berikan tips untuk membantu anak menyelesaikan pekerjaan rumahnya tepat waktu",
+      "Bantu saya menulis email di luar kantor",
+      "Beri saya frasa untuk belajar bahasa baru",
+      "Tunjukkan pada saya cara membuat sesuatu dengan tangan"
     ]);
     const suggestionIcons = ref([
       'bx bx-stopwatch',
       'bx bx-edit-alt',
       'bx bx-compass',
-      'bx bx-wrench',
+      'bx bx-wrench'
     ]);
-    const GOOGLE_API_KEY = ref("AIzaSyB9i0mUkXH14tPPDq0rZUPwGKKgNYnfLRU"); // **Ganti dengan API Key Anda!**
-    const API_REQUEST_URL = computed(
-      () =>
-        `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GOOGLE_API_KEY.value}`
-    );
-    const themeIcon = computed(() =>
-      theme.value === 'light_mode' ? 'bx bx-moon' : 'bx bx-sun'
-    );
+    const GOOGLE_API_KEY = ref("AIzaSyB9i0mUkXH14tPPDq0rZUPwGKKgNYnfLRU"); // **GANTI DENGAN API KEY ANDA!**
+    const API_REQUEST_URL = computed(() => `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GOOGLE_API_KEY.value}`);
+
+    const themeIcon = computed(() => theme.value === 'light_mode' ? 'bx bx-moon' : 'bx bx-sun');
 
     const toggleTheme = () => {
       theme.value = theme.value === 'light_mode' ? 'dark_mode' : 'light_mode';
       localStorage.setItem('themeColor', theme.value);
-      document.body.classList.toggle('light_mode');
+      document.body.classList.toggle("light_mode");
     };
 
     const scrollToBottom = async () => {
@@ -72,17 +75,8 @@ export default defineComponent({
       isGeneratingResponse.value = true;
       userMessage.value = '';
 
-      chatHistory.value.push({
-        type: 'user',
-        text: messageText,
-        formattedText: messageText,
-      });
-      chatHistory.value.push({
-        type: 'bot',
-        text: '',
-        formattedText: '',
-        isLoading: true,
-      });
+      chatHistory.value.push({ type: 'user', text: messageText, formattedText: messageText });
+      chatHistory.value.push({ type: 'bot', text: '', formattedText: '', isLoading: true });
       scrollToBottom();
 
       try {
@@ -95,17 +89,13 @@ export default defineComponent({
         });
 
         if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}));
-          const errorMessage =
-            errorData.error?.message ||
-            `HTTP error! status: ${response.status}`;
+          const errorData = await response.json().catch(() => ({})); // Tangkap error JSON parsing
+          const errorMessage = errorData.error?.message || `HTTP error! status: ${response.status}`;
           throw new Error(errorMessage);
         }
 
         const responseData = await response.json();
-        const botText =
-          responseData.candidates?.[0]?.content?.parts?.[0]?.text ||
-          'Tidak ada respon yang diterima.';
+        const botText = responseData.candidates?.[0]?.content?.parts?.[0]?.text || "Tidak ada respon yang diterima.";
         const formattedBotText = marked.parse(botText);
 
         chatHistory.value[chatHistory.value.length - 1] = {
@@ -114,16 +104,17 @@ export default defineComponent({
           formattedText: formattedBotText,
           isLoading: false,
         };
-        hljs.highlightAll();
+        hljs.highlightAll(); // Highlight kode setelah pesan diterima
         scrollToBottom();
+
       } catch (error: any) {
-        console.error('Kesalahan API:', error);
+        console.error("Kesalahan API:", error);
         chatHistory.value[chatHistory.value.length - 1] = {
           type: 'bot',
           text: error.message,
-          formattedText: `<span style="color: red;">${error.message}</span>`,
+          formattedText: `<span style="color: red;">${error.message}</span>`, // Format error message
           isLoading: false,
-          isError: true,
+          isError: true
         };
         scrollToBottom();
       } finally {
@@ -137,42 +128,27 @@ export default defineComponent({
     };
 
     const clearChat = () => {
-      if (confirm('Apakah Anda yakin ingin menghapus semua riwayat chat?')) {
+      if (confirm("Apakah Anda yakin ingin menghapus semua riwayat chat?")) {
         chatHistory.value = [];
-        localStorage.removeItem('saved-api-chats');
+        localStorage.removeItem("saved-api-chats");
       }
     };
 
     const copyMessageToClipboard = (text: string, event: Event) => {
       const target = event.target as HTMLElement;
-      navigator.clipboard
-        .writeText(text)
-        .then(() => {
-          target.innerHTML = `<i class='bx bx-check'></i>`;
-          setTimeout(
-            () => (target.innerHTML = `<i class='bx bx-copy-alt'></i>`),
-            1000
-          );
-        })
-        .catch((err) => {
-          console.error('Gagal menyalin:', err);
-          alert('Tidak dapat menyalin teks!');
-        });
+      navigator.clipboard.writeText(text).then(() => {
+        target.innerHTML = `<i class='bx bx-check'></i>`;
+        setTimeout(() => target.innerHTML = `<i class='bx bx-copy-alt'></i>`, 1000);
+      }).catch(err => {
+        console.error("Gagal menyalin:", err);
+        alert("Tidak dapat menyalin teks!");
+      });
     };
 
     onMounted(() => {
       document.body.classList.toggle('light_mode', theme.value === 'light_mode');
       scrollToBottom();
     });
-
-    const isChatOpen = ref(false);
-    const toggleChat = () => {
-      isChatOpen.value = !isChatOpen.value;
-    };
-
-    const chatBotClass = computed(() =>
-      props.offset ? 'bottom-[85px]' : 'bottom-8'
-    );
 
     return {
       chatHistory,
@@ -189,22 +165,21 @@ export default defineComponent({
       geminiAvatar,
       copyMessageToClipboard,
       toggleChat,
-      chatBotClass,
+      botGeminiClass,
       isChatOpen,
     };
   },
 });
+
 </script>
 
-
 <template>
-  <button 
+    <button 
     @click="toggleChat"
-    class="fixed right-8 bg-transparent text-white p-3 rounded-full w-[30px] h-[30px] shadow-lg hover:bg-primary transition-all duration-300 ease-in-out"
-    :class="[chatBotClass]"
-    aria-label="ChatBot"
-    v-bind:class="$attrs"
-    >
+    class="fixed right-8 bg-transparent text-white p-3 rounded-full shadow-lg hover:bg-primary transition-all duration-300 ease-in-out"
+    :class="[botGeminiClass]"
+    aria-label="BotGemini"
+  >
     <!-- <i class="fa-brands fa-bots fa-xl"></i> -->
     <img 
         v-if="!isChatOpen"
@@ -227,19 +202,10 @@ export default defineComponent({
         />
       </svg>
   </button>
-  <!-- Chat Window -->
-  <div
-      v-show="isChatOpen"
-      class="chatbot-container fixed top-[70px] right-6 w-[350px] md:w-[400px] bg-white rounded-lg shadow-xl overflow-hidden z-40 transition-all duration-300"
-    >
-      <!-- Header -->
-      <!-- <div class="bg-blue-500 p-4 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
-        <h1 class="text-white text-xl font-bold">AI Chat Assistant</h1>
-      </div> -->
-
-      <!-- <div class="chatbot-container fixed top-[70px] right-6 w-[350px] md:w-[400px] bg-white rounded-lg shadow-xl overflow-hidden z-40 transition-all duration-300"
-        v-show="isChatOpen"
-        >   -->
+  <div class="chatbot-container fixed top-[70px] right-6 w-[350px] md:w-[400px] bg-white rounded-lg shadow-xl overflow-hidden z-40 transition-all duration-300"
+        v-show="!isChatOpen"
+        style="display: none;"
+        >  
       <!-- Header -->
       <div class="bg-blue-500 h-[50px] p-5 flex items-center justify-around p-4 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
         <h1 class="text-white text-xl font-bold pl-10">AI Chat Assistant</h1>
@@ -274,9 +240,8 @@ export default defineComponent({
         </form>
         <!-- <p class="prompt__disclaim">Gemini dapat membuat kesalahan, jadi periksa kembali responsnya</p> -->
       </section>
-    <!-- </div> -->
-  </div>  
-</template>
+    </div>
+  </template>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
@@ -440,7 +405,7 @@ body.hide-header .header{
     bottom: 0; */
     padding: 1rem;
     /* background: #1E1F20; */
-    /* width: 350px; */
+    width: 350px;
 }
 
 .prompt__input-wrapper{
@@ -759,21 +724,5 @@ blockquote{
         font-size: 0.8rem;
     }
 
-}
-
-@media only screen and ( max-width: 480px ) {
-  .prompt{
-    width: 350px;
-  }
-}
-@media only screen and ( max-width: 600px ) {
-  .prompt{
-    width: 350px;
-  }
-}
-@media only screen and ( max-width: 768px ) {
-  .prompt{
-    width: 350px;
-  }
 }
 </style>

@@ -49,7 +49,7 @@ const projects = ref([
 ])
 
 const skills = ref([
-  { name: 'HTML', icon: '/skils/html.png' },
+  { name: 'HTML', icon: '/skils/html.png', class: 'hover:bg-red-200' },
   { name: 'CSS', icon: '/skils/css.png' },
   { name: 'JavaScript', icon: '/skils/js.png' },
   { name: 'PHP', icon: '/skils/php.png' },
@@ -69,9 +69,8 @@ const resumeAnimationSkill = () => {
   isPausedSkill.value = false;
 };
 
-// Animasi Mengetik
 const texts = ["Full Stack Developer", "Gamers",];
-const displayedText = ref<string>(""); // Teks yang akan ditampilkan
+const displayedText = ref<string>("");
 let index = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -83,7 +82,7 @@ const type = () => {
     charIndex--;
     if (charIndex === 0) {
       isDeleting = false;
-      index = (index + 1) % texts.length; // Pindah ke teks berikutnya
+      index = (index + 1) % texts.length;
     }
   } else {
     charIndex++;
@@ -92,13 +91,11 @@ const type = () => {
     }
   }
 
-  // Update teks yang ditampilkan
   displayedText.value = currentText.substring(0, charIndex);
 
-  // Atur kecepatan mengetik dan menghapus
   const delay = isDeleting ? 300 : 200;
   if (charIndex === currentText.length && !isDeleting) {
-    typingInterval = window.setTimeout(type, 5000); // Tunggu 5 detik sebelum menghapus
+    typingInterval = window.setTimeout(type, 5000); 
   } else {
     typingInterval = window.setTimeout(type, delay);
   }
@@ -234,6 +231,7 @@ const links = [
               <div
                 v-for="(skill, index) in [...skills, ...skills, ...skills]"
                 :key="index"
+                :class="skill.class"
                 class="card p-4 bg-gray-100 dark:bg-gray-800 text-center rounded-lg shadow-lg flex flex-col items-center hover:scale-110 cursor-pointer"
                 >
                   <img :src="skill.icon" :alt="skill.name" class="w-15 h-12 mb-2" />

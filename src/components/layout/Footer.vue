@@ -12,7 +12,7 @@
             :class="{ 'paused': isPaused }"
             @mouseenter="pauseAnimation"
             @mouseleave="resumeAnimation"
-          >
+            >
             <a
               v-for="(link, index) in [ ...links, ...links, ...links ]"
               :key="index"
@@ -21,7 +21,7 @@
               target="_blank"
               rel="noopener noreferrer"
               class="text-gray-400 hover:scale-110 transition-transform text-2xl"
-            >
+              >
               <i :class="link.icon"></i>
             </a>
           </div>
