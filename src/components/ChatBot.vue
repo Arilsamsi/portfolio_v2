@@ -123,7 +123,7 @@ const toggleChat = () => {
   <!-- Chat Window -->
   <div
       v-show="isChatOpen"
-      class="fixed top-[70px] right-6 w-[350px] md:w-[300px] bg-white rounded-lg shadow-xl overflow-hidden z-40 transition-all duration-300"
+      class="fixed top-[70px] right-6 w-[350px] md:w-[400px] bg-white rounded-lg shadow-xl overflow-hidden z-40 transition-all duration-300"
     >
       <!-- Header -->
       <div class="bg-blue-500 p-4 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
