@@ -28,48 +28,39 @@ const messages = ref<Message[]>([
 
 const newMessage = ref('')
 const isChatOpen = ref(false)
-const userName = ref<string>('') // Menyimpan nama pengguna
-const hasAskedName = ref<boolean>(false) // Flag untuk mengecek apakah chatbot sudah bertanya
+const userName = ref<string>('')
+const hasAskedName = ref<boolean>(false)
 
 const sendMessage = () => {
   if (!newMessage.value.trim()) return
 
-  // Add user message
   messages.value.push({
     text: newMessage.value,
     isUser: true,
     timestamp: new Date()
   })
 
-    
-// Respons AI
 setTimeout(() => {
   if (!userName.value && !hasAskedName.value) {
-    // Jika belum ada nama dan chatbot belum bertanya
     messages.value.push({
       text: "Siapa nama kamu?",
       isUser: false,
       timestamp: new Date()
     });
-    hasAskedName.value = true; // Tandai sudah bertanya
+    hasAskedName.value = true;
   } else if (!userName.value) {
-    // Jika belum ada nama, ambil nama yang dimasukkan pengguna
-    const inputName = newMessage.value.trim().toLowerCase(); // Nama yang dimasukkan user
-    if (inputName) { // Pastikan input tidak kosong
-      userName.value = inputName; // Simpan nama pengguna
-
-      // Debug log untuk memeriksa nama yang dimasukkan
+    const inputName = newMessage.value.trim().toLowerCase();
+    if (inputName) { 
+      userName.value = inputName
       console.log('Nama yang dimasukkan:', inputName);
 
-      // Cek apakah nama yang dimasukkan adalah "deyis", "dyis", atau "deis"
-      if (["deyis", "dyis", "deis"].includes(inputName)) {
+      if (["deyis", "dyis", "deis", "deyiss", "eyis", "eyiss", "eyisss", "eyissss"].includes(inputName)) {
         messages.value.push({
           text: `I love you sayanggggkuuu cintakuuu cantikkkuuu😍😘💗💗💗`,
           isUser: false,
           timestamp: new Date()
         });
       } else {
-        // Jika nama lain, ucapkan "Nice to meet you"
         messages.value.push({
           text: `Nice to meet you, ${inputName}!`,
           isUser: false,
@@ -77,7 +68,6 @@ setTimeout(() => {
         });
       }
     } else {
-      // Jika input kosong
       messages.value.push({
         text: "Tolong masukkan nama kamu.",
         isUser: false,
@@ -85,14 +75,13 @@ setTimeout(() => {
       });
     }
   } else {
-    // Jika nama sudah dimasukkan, respons standar
     messages.value.push({
       text: `Nice to meet you, ${userName.value}!`,
       isUser: false,
       timestamp: new Date()
     });
   }
-  newMessage.value = ''; // Reset input setelah pengiriman pesan
+  newMessage.value = ''; 
   }, 1000)
 }
 
@@ -117,10 +106,11 @@ const toggleChat = () => {
     <svg
         v-else
         xmlns="http://www.w3.org/2000/svg"
-        class="h-8 w-8"
+        class="h-[30px] w-[30px] dark:text-white text-black"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
+        
       >
         <path
           stroke-linecap="round"
@@ -133,22 +123,23 @@ const toggleChat = () => {
   <!-- Chat Window -->
   <div
       v-show="isChatOpen"
-      class="fixed bottom-24 right-6 w-[350px] md:w-[400px] bg-white rounded-lg shadow-xl overflow-hidden z-40 transition-all duration-300"
+      class="fixed top-[70px] right-6 w-[350px] md:w-[300px] bg-white rounded-lg shadow-xl overflow-hidden z-40 transition-all duration-300"
     >
       <!-- Header -->
-      <div class="bg-blue-600 p-4">
+      <div class="bg-blue-500 p-4 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
         <h1 class="text-white text-xl font-bold">AI Chat Assistant</h1>
       </div>
 
       <!-- Chat Messages -->
-      <div class="h-[400px] overflow-y-auto p-4 space-y-4">
+      <div class="h-[368px] overflow-y-auto p-4 space-y-4 dark:bg-black/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
         <div
           v-for="(message, index) in messages"
           :key="index"
           :class="[
             'max-w-[80%] p-3 rounded-lg',
-            message.isUser ? 'ml-auto bg-blue-500 text-white' : 'bg-gray-100 text-gray-800'
+            message.isUser ? 'ml-auto bg-gray-300 text-gray-900 dark:bg-green-800/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 dark:text-white' : 'bg-gray-300 text-gray-900 dark:bg-green-800/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 dark:text-white'
           ]"
+          class=""
         >
           <p>{{ message.text }}</p>
           <span class="text-xs opacity-70">
@@ -158,17 +149,17 @@ const toggleChat = () => {
       </div>
 
       <!-- Input Area -->
-      <div class="border-t p-4">
+      <div class="border-t p-4 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
         <form @submit.prevent="sendMessage" class="flex gap-2">
           <input
             v-model="newMessage"
             type="text"
             placeholder="Type your message..."
-            class="flex-1 p-2 border rounded-lg focus:outline-none focus:border-blue-500"
+            class="flex-1 p-2 border rounded-lg focus:outline-none focus:border-blue-500 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800"
           />
           <button
             type="submit"
-            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors dark:bg-green-800"
           >
             Send
           </button>

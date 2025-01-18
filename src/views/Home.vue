@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { onMounted, onUnmounted } from "vue";
 import ProjectCard from '../components/ProjectCard.vue'
 import ContactForm from '../components/ContactForm.vue'
-import PopUp from '../components/layout/PopUp.vue';
+import PopUp from '../components/PopUp.vue';
 
 const projects = ref([
   {

@@ -3,7 +3,7 @@ import { useWindowScroll, } from '@vueuse/core'
 import { computed, ref, watch } from 'vue'
 import Header from './components/layout/Header.vue'
 import Footer from './components/layout/Footer.vue'
-import ChatBot from './views/ChatBot.vue'
+import ChatBot from './components/ChatBot.vue'
 
 const { y } = useWindowScroll()
 const showScrollTop = computed(() => y.value > 300)
