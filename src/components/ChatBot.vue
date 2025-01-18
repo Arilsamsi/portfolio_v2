@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref, computed, nextTick } from 'vue';
-import { marked } from 'marked';
+import * as marked from 'marked';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github-dark.min.css';
 import geminiAvatar from '../assets/bot/gemini.svg'

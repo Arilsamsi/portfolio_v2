@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@types/highlight.js": "^9.12.4",
+    "@types/marked": "^5.0.2",
     "@vitejs/plugin-vue": "^5.1.4",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.32",
