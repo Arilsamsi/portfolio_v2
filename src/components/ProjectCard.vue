@@ -10,7 +10,7 @@ defineProps<{
 </script>
 
 <template>
-  <article class="card group hover:scale-105 transition-transform duration-300">
+  <article class="card group hover:scale-105 transition-transform duration-300 w-[340px] md:w-[250px]">
     <img :src="image" :alt="title" class="w-full h-48 object-cover rounded-lg mb-4">
     <h3 class="text-xl font-semibold mb-2">{{ title }}</h3>
     <p class="text-gray-600 dark:text-gray-300 mb-4">{{ description }}</p>

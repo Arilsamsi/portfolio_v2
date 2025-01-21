@@ -7,9 +7,10 @@ import HamburgerButton from './HamburgerButton.vue'
 const { isMenuOpen, toggleMenu, closeMenu } = useMenu()
 
 const menuItems = [
-  { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Contact', href: '#contact' }
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'Projects', href: '/projects' },
+  { name: 'Contact', href: '/contact' }
 ]
 </script>
 
