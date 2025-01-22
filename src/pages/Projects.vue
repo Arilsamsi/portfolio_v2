@@ -67,8 +67,8 @@ export default {
 <template>
     <!-- <Header /> -->
     <!-- Projects Section -->
-    <section class="flex items-center justify-center flex-col bg-gray-50 dark:bg-gray-800 min-w-screen mt-[70px] md:mt-[91px] mb-5">
-        <h2 class="section-title">My Projects</h2>
+    <section class="flex items-center justify-center flex-col bg-gray-50 dark:bg-gray-800 min-w-screen mt-[70px] md:mt-[89px] mb-5">
+        <h2 class="section-title mb-0">My Projects</h2>
         <div class="grid md:grid-cols-3 col-gap-20 lg:grid-cols-4 col-gap-y-1 xl:grid-cols-5 gap-5">
             <ProjectCard
                 v-for="project in projects"

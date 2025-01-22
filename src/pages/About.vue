@@ -51,7 +51,7 @@ export default {
 <template>
     <!-- <Header /> -->
     <!-- About Section -->
-    <section class="section-container flex flex-col md:flex-row items-center justify-between py-12 mt-[34px]">
+    <section class="section-container flex flex-col md:flex-row items-center justify-between py-12 mt-[32px]">
       <!-- Profil Image -->
       <div class="w-full md:w-1/3 flex justify-center mb-8 md:mb-0">
         <img src="../assets/profile/ande.png" alt="Aril Samsi" class="object-cover border-2 border-gray-300 dark:border-gray-700" width="300px" height="300px">

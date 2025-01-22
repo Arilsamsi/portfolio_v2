@@ -8,14 +8,10 @@
       <div class="social-links mt-3">
         <div class="overflow-hidden relative w-full">
           <div
-            class="links flex space-x-8 animate-scroll absolute"
-            :class="{ 'paused': isPaused }"
-            @mouseenter="pauseAnimation"
-            @mouseleave="resumeAnimation"
+            class="links flex items-center justify-center gap-5"
             >
             <a
-              v-for="(link, index) in [ ...links, ...links, ...links ]"
-              :key="index"
+              v-for="link in links"
               :href="link.href"
               :class="link.class"
               target="_blank"
@@ -32,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+// import { ref } from 'vue';
 
 export default {
   name: "Footer",
@@ -60,21 +56,24 @@ export default {
       },
     ];
 
-    const isPaused = ref(false);
+    // const isPaused = ref(false);
 
-    const pauseAnimation = () => {
-      isPaused.value = true;
-    };
+    // const pauseAnimation = () => {
+    //   isPaused.value = true;
+    // };
 
-    const resumeAnimation = () => {
-      isPaused.value = false;
-    };
+    // const resumeAnimation = () => {
+    //   isPaused.value = false;
+    // };
 
-    return { links, isPaused, pauseAnimation, resumeAnimation };
+    // return { links, isPaused, pauseAnimation, resumeAnimation };
+    return {
+      links,
+    }
   },
 };
 </script>
-
+<!-- 
 <style scoped>
 @keyframes scroll {
   0% {
@@ -119,4 +118,4 @@ export default {
 .text-2xl {
   font-size: 1.5rem;
 }
-</style>
+</style> -->
