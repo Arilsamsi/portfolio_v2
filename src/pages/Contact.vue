@@ -16,7 +16,7 @@ export default {
 <template>
     <!-- <Header /> -->
      <!-- Contact Section -->
-    <section id="contact" class="section-container mt-[70px] md:h-full mt-[10px]">
+    <section id="contact" class="section-container min-h-screen mb-1 mt-[10px] md:mt-[10px] mb-1">
       <h2 class="section-title">Contact Me</h2>
       <ContactForm />
     </section>

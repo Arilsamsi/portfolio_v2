@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-gray-800 text-white py-6">
+  <footer class="bg-gray-800 text-white py-6 w-full">
     <div class="container mx-auto text-center">
       <!-- Copyright -->
       <p>&copy; 2025 My Portfolio Website. All rights reserved.</p>
