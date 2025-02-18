@@ -14,7 +14,7 @@ export default {
   data() {
     const projects = ref([
       {
-        title: "Project 1",
+        title: "Portofolio",
         description: "My first Portfolio",
         image: "/projects/projects_1.png",
         tags: ["HTML", "CSS", "Javascript"],
@@ -22,7 +22,7 @@ export default {
         repo: "https://github.com/Arilsamsi/proyek",
       },
       {
-        title: "Project 2",
+        title: "Website Kelas",
         description: "First Projects In class X",
         image: "/projects/projects_2.png",
         tags: ["HTML", "CSS", "Javascript"],
@@ -30,7 +30,7 @@ export default {
         repo: "https://github.com/Arilsamsi/proyek",
       },
       {
-        title: "Project 3",
+        title: "QR Code Generator",
         description: "A website make QRCODE",
         image: "/projects/projects_3.png",
         tags: ["HTML", "CSS", "Javascript"],
@@ -38,7 +38,7 @@ export default {
         repo: "https://github.com/Arilsamsi/proyek",
       },
       {
-        title: "Project 4",
+        title: "Todo List",
         description: "Website todo list",
         image: "/projects/projects_4.png",
         tags: ["Vue JS"],
@@ -46,7 +46,7 @@ export default {
         repo: "https://github.com/Arilsamsi/todo-list",
       },
       {
-        title: "Project 5",
+        title: "Maniac Movie",
         description: "Wesbite movie",
         image: "/projects/projects_5.png",
         tags: ["Vue JS"],
@@ -54,7 +54,7 @@ export default {
         repo: "https://github.com/Arilsamsi/movie-maniac_v2",
       },
       {
-        title: "Project 6",
+        title: "AnimStrim",
         description: "AnimStrim, website nonton anime sub indo",
         image: "/projects/projects_6.png",
         tags: ["React JS", "Tailwind Css"],
