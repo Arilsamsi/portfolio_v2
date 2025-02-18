@@ -54,8 +54,8 @@ export default {
         repo: "https://github.com/Arilsamsi/movie-maniac_v2",
       },
       {
-        title: "AnimStrim",
-        description: "AnimStrim, website nonton anime sub indo",
+        title: "AnimeStrim",
+        description: "AnimeStrim, website nonton anime sub indo",
         image: "/projects/projects_6.png",
         tags: ["React JS", "Tailwind Css"],
         link: "https://animestrim.vercel.app/",
