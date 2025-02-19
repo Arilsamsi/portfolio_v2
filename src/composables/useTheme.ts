@@ -20,10 +20,8 @@ export const useTheme = () => {
     }
   };
 
-  // Watch for theme changes
   watch(theme, updateTheme, { immediate: true });
 
-  // Watch system theme changes
   window
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", (e) => {
