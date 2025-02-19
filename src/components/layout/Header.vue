@@ -1,32 +1,33 @@
 <script setup lang="ts">
-import { useMenu } from '../../composables/useMenu'
-import ThemeSwitcher from '../ThemeSwitcher.vue'
-import MobileMenu from './MobileMenu.vue'
-import HamburgerButton from './HamburgerButton.vue'
+import { useMenu } from "../../composables/useMenu";
+import ThemeSwitcher from "../ThemeSwitcher.vue";
+import MobileMenu from "./MobileMenu.vue";
+import HamburgerButton from "./HamburgerButton.vue";
 
-const { isMenuOpen, toggleMenu, closeMenu } = useMenu()
+const { isMenuOpen, toggleMenu, closeMenu } = useMenu();
 
 const menuItems = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Projects', href: '/projects' },
-  { name: 'Contact', href: '/contact' }
-]
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Projects", href: "/projects" },
+  { name: "Contact", href: "/contact" },
+  // { name: "Sosial Media", href: "/sosialmedia" },
+];
 </script>
 
 <template>
-  <header 
+  <header
     class="fixed w-full top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800"
   >
     <nav class="max-w-6xl mx-auto px-4 py-4">
       <div class="flex justify-between items-center">
-        <a 
-          href="/" 
+        <a
+          href="/"
           class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
         >
           Portfolio
         </a>
-        
+
         <!-- Desktop Menu -->
         <div class="hidden md:flex items-center gap-8">
           <a
@@ -43,10 +44,7 @@ const menuItems = [
         <!-- Mobile Menu Controls -->
         <div class="flex items-center gap-4 md:hidden">
           <ThemeSwitcher />
-          <HamburgerButton
-            :is-open="isMenuOpen"
-            @click="toggleMenu"
-          />
+          <HamburgerButton :is-open="isMenuOpen" @click="toggleMenu" />
         </div>
       </div>
 
