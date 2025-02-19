@@ -99,7 +99,7 @@ export default {
     <!-- Profil Image -->
     <div class="w-full md:w-1/3 flex justify-center mb-8 md:mb-0">
       <img
-        src="../assets/profile/ande.png"
+        src="../assets/profile/aril.jpg"
         alt="Aril Samsi"
         class="object-cover border-2 border-gray-300 dark:border-gray-700"
         width="300px"
@@ -118,7 +118,7 @@ export default {
         Hai, nama saya Aril Samsi. Saya sekolah di SMKN 1 Limboto, dan mengambil
         jurusan PPLG (Pengembangan perangkat lunak & GIM). Alasan saya masuk ke
         SMKN 1 Limboto adalah saya sangat ingin sekali belajar CODING. Hobi saya
-        hanya nonton Anime dan bermain game, dan saya juga suka dengan Sepak
+        hanya nonton Donghua dan bermain game, dan saya juga suka dengan Sepak
         bola.
       </p>
       <h2
