@@ -1,21 +1,22 @@
 <script setup lang="ts">
 // import { useWindowScroll, } from '@vueuse/core'
 // import { computed, ref, watch } from 'vue'
-import Header from './components/layout/Header.vue'
-import Footer from './components/layout/Footer.vue'
-import ChatBot from './components/ChatBot.vue'
+import Header from "./components/layout/Header.vue";
+import Footer from "./components/layout/Footer.vue";
+import ChatBot from "./components/ChatBot.vue";
 // import BotGemini from './components/BotGemini.vue'
-
 </script>
 
 <template>
   <Header />
-  <transition name="page" mode="out-in">
-    <router-view v-slot="{ Component }">
-      <component :is="Component" />
-    </router-view>
-  </transition>
-  <ChatBot/>
+  <router-view v-slot="{ Component }">
+    <transition name="page" mode="out-in">
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </transition>
+  </router-view>
+  <ChatBot />
   <Footer />
 </template>
 

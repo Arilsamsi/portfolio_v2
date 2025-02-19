@@ -82,30 +82,42 @@ const pauseAnimation = () => {
 const resumeAnimation = () => {
   isPaused.value = false;
 };
+
+const isLoading = ref(true);
+
+onMounted(() => {
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 2000); // Loader akan hilang setelah 2 detik
+});
 </script>
 
 <template>
   <!-- <Header /> -->
   <!-- Hero Section -->
+  <div v-if="isLoading" class="loader-container">
+    <div class="loader"></div>
+  </div>
   <section
+    v-else
     class="h-[100vh] min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10"
   >
     <div class="text-center animate-fade-in">
       <h1 class="text-5xl font-bold mb-6 dark:text-white">Ahmad Aril Samsi</h1>
       <div
-        class="text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent dark:bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent mb-8"
+        class="text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent dark:bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent mb-5"
       >
         <span>{{ displayedText }}</span>
       </div>
-      <a
+      <!-- <a
         href="https://wa.me/6282393426013"
         class="bg-[#128c7e] text-white px-8 py-3 rounded-full hover:bg-[#129e7a] transition-colors duration-300"
       >
         <font-awesome-icon :icon="['fab', 'whatsapp']" />
         WhatsApp
-      </a>
+      </a> -->
       <div class="social-links">
-        <div class="overflow-hidden relative w-full h-10 mt-5">
+        <div class="overflow-hidden relative w-full h-10">
           <div
             class="links flex space-x-4 absolute w-auto animate-scroll"
             :class="{ paused: isPaused }"
@@ -195,5 +207,39 @@ const resumeAnimation = () => {
 }
 .skill {
   margin-bottom: 7px;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.loader {
+  width: 70px;
+  height: 70px;
+  border: 8px solid transparent;
+  border-top: 8px solid #3b82f6;
+  border-right: 8px solid #8b5cf6;
+  border-bottom: 8px solid #3b82f6;
+  border-left: 8px solid #8b5cf6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>

@@ -47,7 +47,7 @@ export default {
       },
       {
         title: "Maniac Movie",
-        description: "Wesbite movie",
+        description: "Wesbite search movie",
         image: "/projects/projects_5.png",
         tags: ["Vue JS"],
         link: "https://maniacmovie.vercel.app/",
@@ -55,7 +55,7 @@ export default {
       },
       {
         title: "AnimeStrim",
-        description: "AnimeStrim, website nonton anime sub indo",
+        description: "AnimeStrim, website nonton Anime sub indo",
         image: "/projects/projects_6.png",
         tags: ["React JS", "Tailwind Css"],
         link: "https://animestrim.vercel.app/",

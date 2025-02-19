@@ -46,6 +46,11 @@ export default defineComponent({
         icon: "/skils/mysql.png",
         class: "hover:bg-mysql-gradient",
       },
+      // {
+      //   name: "React JS",
+      //   icon: "/skils/react.png",
+      //   class: "hover:bg-react-gradient",
+      // },
     ]);
 
     return {
@@ -95,7 +100,7 @@ export default defineComponent({
           v-for="skill in skills"
           :key="skill.name"
           :class="skill.class"
-          class="card p-4 bg-gray-100 text-center rounded-lg shadow-lg flex flex-col items-center hover:scale-105"
+          class="card p-4 bg-gray-100 text-center rounded-lg shadow-lg flex flex-col items-center hover:scale-105 cursor-pointer"
         >
           <img :src="skill.icon" :alt="skill.name" class="w-15 h-12 mb-2" />
           <!-- <div v-html="skill.icon"></div> -->
