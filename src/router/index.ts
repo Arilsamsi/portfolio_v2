@@ -4,6 +4,7 @@ import About from "../pages/About.vue";
 import Projects from "../pages/Projects.vue";
 import Contact from "../pages/Contact.vue";
 import MoreAbout from "../pages/MoreAbout.vue";
+import NotFound from "../pages/NotFound.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: "/moreabout",
       name: "MoreAbout",
       component: MoreAbout,
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "NotFound",
+      component: NotFound,
     },
   ],
 });
