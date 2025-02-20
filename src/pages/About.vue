@@ -58,11 +58,11 @@ export default {
       //   icon: "/skils/python.png",
       //   class: "hover:bg-python-gradient",
       // },
-      {
-        name: "My SQL",
-        icon: "/skils/mysql.png",
-        class: "hover:bg-mysql-gradient",
-      },
+      // {
+      //   name: "My SQL",
+      //   icon: "/skils/mysql.png",
+      //   class: "hover:bg-mysql-gradient",
+      // },
     ]);
 
     // const platforms = ref<Platform[]>([

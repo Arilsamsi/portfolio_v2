@@ -1,17 +1,13 @@
-<script lang="ts">
+<script>
 import { ref } from "vue";
 import ProjectCard from "../components/ProjectCard.vue";
-// import Header from '../components/layout/Header.vue';
-// import Footer from '../components/layout/Footer.vue';
 
 export default {
   name: "Projects",
   components: {
     ProjectCard,
-    // Header,
-    // Footer,
   },
-  data() {
+  setup() {
     const projects = ref([
       {
         title: "Portofolio",
@@ -47,7 +43,7 @@ export default {
       },
       {
         title: "Maniac Movie",
-        description: "Wesbite search movie",
+        description: "Website search movie",
         image: "/projects/projects_5.png",
         tags: ["Vue JS"],
         link: "https://maniacmovie.vercel.app/",
@@ -71,14 +67,14 @@ export default {
 </script>
 
 <template>
-  <!-- <Header /> -->
-  <!-- Projects Section -->
   <section
-    class="flex items-center justify-center flex-col bg-gray-50 dark:bg-gray-800 min-w-screen min-h-screen mt-[69px] mb-10 md:pt-1 mb-1"
+    class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 min-h-screen pt-20 px-5 md:px-10"
   >
-    <h2 class="section-title mb-0">My Projects</h2>
+    <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-10">
+      My Projects
+    </h2>
     <div
-      class="grid md:grid-cols-3 col-gap-20 lg:grid-cols-4 col-gap-y-1 xl:grid-cols-5 gap-5"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 w-full max-w-7xl"
     >
       <ProjectCard
         v-for="project in projects"
@@ -87,11 +83,10 @@ export default {
       />
     </div>
   </section>
-  <!-- <Footer /> -->
 </template>
 
 <style scoped>
-.section-container {
-  width: 100%;
+section {
+  padding-bottom: 50px;
 }
 </style>
