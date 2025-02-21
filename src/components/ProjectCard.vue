@@ -15,29 +15,35 @@ const isPopupOpen = ref(false);
 
 <template>
   <article
-    class="card group hover:scale-105 transition-transform duration-300 w-[340px] md:w-[450px]"
+    class="card group hover:scale-105 transition-transform duration-300 w-full max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl bg-white dark:bg-gray-900 p-4 rounded-2xl shadow-lg"
   >
-    <img
-      :src="image"
-      :alt="title"
-      class="w-full h-48 object-cover rounded-lg mb-4 cursor-pointer"
-      @click="isPopupOpen = true"
-    />
-    <h3 class="text-xl font-semibold mb-2">{{ title }}</h3>
-    <p class="text-gray-600 dark:text-gray-300 mb-4">{{ description }}</p>
-    <div class="flex flex-wrap gap-2 mb-4">
+    <div class="relative cursor-pointer" @click="isPopupOpen = true">
+      <img
+        :src="image"
+        :alt="title"
+        class="w-full h-56 object-cover rounded-lg"
+      />
+      <div
+        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white text-lg font-semibold"
+      >
+        Click to View
+      </div>
+    </div>
+    <h3 class="text-xl font-semibold mt-4">{{ title }}</h3>
+    <p class="text-gray-600 dark:text-gray-300 mt-2">{{ description }}</p>
+    <div class="flex flex-wrap gap-2 mt-3">
       <span
         v-for="tag in tags"
         :key="tag"
-        class="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full"
+        class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full"
       >
         {{ tag }}
       </span>
     </div>
-    <div class="flex flex-col gap-5">
+    <div class="flex justify-between items-center mt-5">
       <a
         :href="link"
-        class="inline-block text-primary hover:text-secondary transition-colors duration-300"
+        class="text-primary hover:text-secondary transition-colors duration-300 font-medium"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -45,7 +51,7 @@ const isPopupOpen = ref(false);
       </a>
       <a
         :href="repo"
-        class="inline-block text-primary hover:text-secondary transition-colors duration-300"
+        class="text-primary hover:text-secondary transition-colors duration-300 font-medium"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -58,14 +64,14 @@ const isPopupOpen = ref(false);
   <transition name="fade">
     <div
       v-if="isPopupOpen"
-      class="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-md z-50"
+      class="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-md z-50 p-4"
       @click.self="isPopupOpen = false"
     >
       <div
-        class="relative bg-white dark:bg-gray-800 p-5 rounded-lg shadow-lg w-11/12 max-w-lg"
+        class="relative bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg"
       >
         <button
-          class="absolute top-2 right-2 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white text-xl"
+          class="absolute top-2 right-2 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white text-2xl"
           @click="isPopupOpen = false"
         >
           &times;
