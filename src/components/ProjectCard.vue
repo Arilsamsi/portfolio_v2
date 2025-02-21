@@ -24,7 +24,7 @@ const isPopupOpen = ref(false);
         class="w-full h-56 object-cover rounded-lg"
       />
       <div
-        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white text-lg font-semibold"
+        class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white text-lg font-semibold"
       >
         Click to View
       </div>

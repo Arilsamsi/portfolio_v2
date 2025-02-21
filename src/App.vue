@@ -28,12 +28,12 @@ import ChatBot from "./components/ChatBot.vue";
 
 .page-enter-from {
   opacity: 0;
-  transform: translateY(20px); /* Muncul dari bawah */
+  transform: translateY(20px);
 }
 
 .page-leave-to {
   opacity: 0;
-  transform: translateY(-20px); /* Pergi ke atas */
+  transform: translateY(-20px);
 }
 </style>
 
