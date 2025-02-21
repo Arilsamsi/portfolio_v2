@@ -53,9 +53,18 @@ export default {
         title: "AnimeStrim",
         description: "AnimeStrim, website nonton Anime sub indo",
         image: "/projects/projects_6.png",
-        tags: ["React JS", "Tailwind Css"],
+        tags: ["React JS", "Tailwind CSS"],
         link: "https://animestrim.vercel.app/",
         repo: "https://github.com/Arilsamsi/web-anime_v2",
+      },
+      {
+        title: "eAl-Qur'an",
+        description:
+          "eAl-Qur'an adalah website membaca dan mendengarkan Al-Qur'an dengan tampilan elegan dan fitur pencarian cepat.",
+        image: "/projects/projects_7.png",
+        tags: ["React JS", "Tailwind CSS"],
+        link: "https://equran.vercel.app/",
+        repo: "https://github.com/Arilsamsi/eAl-Quran",
       },
     ]);
 
@@ -67,14 +76,14 @@ export default {
 </script>
 
 <template>
-  <section
+  <div
     class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 min-h-screen pt-20 px-5 md:px-10"
   >
     <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-10">
       My Projects
     </h2>
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 w-full max-w-7xl"
+      class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 w-full max-w-9xl"
     >
       <ProjectCard
         v-for="project in projects"
@@ -82,11 +91,11 @@ export default {
         v-bind="project"
       />
     </div>
-  </section>
+  </div>
 </template>
 
 <style scoped>
-section {
+div {
   padding-bottom: 50px;
 }
 </style>
