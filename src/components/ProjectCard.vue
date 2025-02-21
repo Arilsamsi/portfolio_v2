@@ -15,7 +15,7 @@ const isPopupOpen = ref(false);
 
 <template>
   <article
-    class="card group hover:scale-105 transition-transform duration-300 w-[340px] md:w-[400px]"
+    class="card group hover:scale-105 transition-transform duration-300 w-[340px] md:w-[450px]"
   >
     <img
       :src="image"
