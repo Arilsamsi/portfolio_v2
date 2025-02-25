@@ -89,7 +89,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="max-w-2xl mx-auto">
+  <div class="max-w-2xl mx-auto p-5 w-full">
     <form
       @keydown.enter.prevent="submitForm"
       name="submit-to-google-sheet"
@@ -102,7 +102,6 @@ export default defineComponent({
           v-model="formData.name"
           id="name"
           type="text"
-          required
           class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 dark:bg-gray-800 focus:ring-2 focus:ring-primary"
         />
       </div>
@@ -113,7 +112,6 @@ export default defineComponent({
           v-model="formData.email"
           id="email"
           type="email"
-          required
           class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 dark:bg-gray-800 focus:ring-2 focus:ring-primary"
         />
       </div>
@@ -125,7 +123,6 @@ export default defineComponent({
         <textarea
           v-model="formData.message"
           id="message"
-          required
           rows="4"
           class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 dark:bg-gray-800 focus:ring-2 focus:ring-primary"
         ></textarea>
