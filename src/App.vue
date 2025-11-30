@@ -8,16 +8,16 @@ import ChatBot from "./components/ChatBot.vue";
 </script>
 
 <template>
-  <Header />
   <router-view v-slot="{ Component }">
+    <Header />
     <transition name="page" mode="out-in">
       <keep-alive>
         <component :is="Component" />
       </keep-alive>
     </transition>
+    <ChatBot />
+    <Footer />
   </router-view>
-  <ChatBot />
-  <Footer />
 </template>
 
 <style scoped>

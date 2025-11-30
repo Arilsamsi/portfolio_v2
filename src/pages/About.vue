@@ -169,13 +169,15 @@ export default {
       class="w-full max-w-4xl rounded-xl shadow-xl border-2 border-gray-600 p-3 mt-5"
     >
       <iframe
-        src="https://open.spotify.com/embed/playlist/5l1UE212LJ41Y6jB1w2lW8?utm_source=generator"
+        data-testid="embed-iframe"
+        style="border-radius: 12px"
+        src="https://open.spotify.com/embed/playlist/0ymBhmqqdlZXJBC0va4mAA?utm_source=generator"
         width="100%"
-        height="600"
-        frameborder="0"
+        height="352"
+        frameBorder="0"
+        allowfullscreen="true"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
-        class="rounded-lg"
       ></iframe>
     </div>
     <!-- <Footer /> -->

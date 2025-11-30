@@ -1,9 +1,26 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { onMounted, onUnmounted } from "vue";
+import gsap from "gsap";
 // import ContactForm from '../components/ContactForm.vue'
 // import Header from '../components/layout/Header.vue';
 // import Footer from '../components/layout/Footer.vue';
+
+onMounted(() => {
+  document.addEventListener("mousemove", (event) => {
+    const splash = document.createElement("div");
+    splash.className = "splash";
+    document.body.appendChild(splash);
+
+    gsap.set(splash, { x: event.clientX, y: event.clientY, scale: 0 });
+    gsap.to(splash, {
+      scale: 1,
+      opacity: 0,
+      duration: 0.6,
+      onComplete: () => splash.remove(),
+    });
+  });
+});
 
 const texts = ["Web Developer ", "Kultivator "];
 const displayedText = ref<string>("");
@@ -241,5 +258,14 @@ onMounted(() => {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.splash {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: rgba(0, 255, 255, 0.7);
+  border-radius: 50%;
+  pointer-events: none;
 }
 </style>

@@ -17,6 +17,7 @@
     "@vueuse/core": "^10.7.1",
     "boxicons": "^2.1.4",
     "font-awesome": "^4.7.0",
+    "gsap": "^3.12.7",
     "highlight.js": "^11.11.1",
     "marked": "^15.0.6",
     "require": "^2.4.20",
