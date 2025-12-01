@@ -3,7 +3,7 @@
 // import { computed, ref, watch } from 'vue'
 import Header from "./components/layout/Header.vue";
 import Footer from "./components/layout/Footer.vue";
-import ChatBot from "./components/ChatBot.vue";
+// import ChatBot from "./components/ChatBot.vue";
 // import BotGemini from './components/BotGemini.vue'
 </script>
 
@@ -15,7 +15,7 @@ import ChatBot from "./components/ChatBot.vue";
         <component :is="Component" />
       </keep-alive>
     </transition>
-    <ChatBot />
+    <!-- <ChatBot /> -->
     <Footer />
   </router-view>
 </template>
