@@ -70,7 +70,7 @@ export default defineComponent({
       @click="togglePopup"
       class="bg-blue-600 content-center justify-center flex-1 text-white px-4 py-2 rounded hover:bg-blue-800"
     >
-      Lihat Semuanya
+      Show All
     </button>
 
     <!-- Overlay -->
