@@ -14,7 +14,7 @@ export default {
         description: "My first Portfolio",
         image: "/projects/projects_1.png",
         tags: ["HTML", "CSS", "Javascript"],
-        link: "https://arilsamsi.vercel.app/",
+        link: "",
         repo: "https://github.com/Arilsamsi/proyek",
       },
       {
@@ -42,12 +42,12 @@ export default {
         repo: "https://github.com/Arilsamsi/todo-list",
       },
       {
-        title: "Maniac Movie",
-        description: "Website search movie",
+        title: "MovieStrim",
+        description: "Website list movie",
         image: "/projects/projects_5.png",
-        tags: ["Vue JS"],
-        link: "https://maniacmovie.vercel.app/",
-        repo: "https://github.com/Arilsamsi/movie-maniac_v2",
+        tags: ["React TS", "Tailwind CSS"],
+        link: "https://moviestrim.vercel.app//",
+        repo: "https://github.com/Arilsamsi/movie-strim",
       },
       {
         title: "AnimeStrim",

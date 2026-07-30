@@ -7,9 +7,7 @@
       <!-- Social Media Links -->
       <div class="social-links mt-3">
         <div class="overflow-hidden relative w-full">
-          <div
-            class="links flex items-center justify-center gap-5"
-            >
+          <div class="links flex items-center justify-center gap-5">
             <a
               v-for="link in links"
               :href="link.href"
@@ -17,7 +15,7 @@
               target="_blank"
               rel="noopener noreferrer"
               class="text-gray-400 hover:scale-110 transition-transform text-2xl"
-              >
+            >
               <i :class="link.icon"></i>
             </a>
           </div>
@@ -35,24 +33,24 @@ export default {
   setup() {
     const links = [
       {
-        href: 'https://github.com/arilsamsi/',
-        icon: 'fab fa-github',
-        class: 'hover:text-gray-500',
+        href: "https://github.com/arilsamsi/",
+        icon: "fab fa-github",
+        class: "hover:text-gray-500",
       },
       {
-        href: 'https://www.facebook.com/profile.php?id=100076206191055',
-        icon: 'fab fa-facebook-f',
-        class: 'hover:text-blue-600',
+        href: "https://www.facebook.com/profile.php?id=100076206191055",
+        icon: "fab fa-facebook-f",
+        class: "hover:text-blue-600",
       },
       {
-        href: 'https://www.tiktok.com/@deyissmyluvvv?is_from_webapp=1&sender_device=pc',
-        icon: 'fab fa-tiktok',
-        class: 'hover:text-black',
+        // href: 'https://www.tiktok.com/@deyissmyluvvv?is_from_webapp=1&sender_device=pc',
+        icon: "fab fa-tiktok",
+        class: "hover:text-black",
       },
       {
-        href: 'https://www.instagram.com/arilsamsi/?igsh=aHB5dXY1NTN6N2Q4',
-        icon: 'fab fa-instagram',
-        class: 'hover:text-pink-600',
+        href: "https://www.instagram.com/arilsamsi/?igsh=aHB5dXY1NTN6N2Q4",
+        icon: "fab fa-instagram",
+        class: "hover:text-pink-600",
       },
     ];
 
@@ -69,7 +67,7 @@ export default {
     // return { links, isPaused, pauseAnimation, resumeAnimation };
     return {
       links,
-    }
+    };
   },
 };
 </script>
